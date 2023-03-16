@@ -46,8 +46,8 @@ const Banner = () => {
         </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-16 right-16 top-1/3">
           <h1 className="text-5xl text-white">
-            The best way to find yourself is to lose yourself in the service of
-            others
+            The greatness of a community is most accurately measured by the
+            compassionate actions of its members
           </h1>
         </div>
         <div className="absolute flex flex-col transform -translate-y-1/2 left-20 right-20 top-3/4">
@@ -71,8 +71,7 @@ const Banner = () => {
         </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-16 right-16 top-1/3">
           <h1 className="text-5xl text-white">
-            The best way to find yourself is to lose yourself in the service of
-            others
+            Service to others is the rent you pay for your room here on earth
           </h1>
         </div>
         <div className="absolute flex flex-col transform -translate-y-1/2 left-20 right-20 top-3/4">
