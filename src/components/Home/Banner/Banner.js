@@ -26,7 +26,9 @@ const Banner = () => {
           </h1>
         </div>
         <div className="absolute flex flex-col transform -translate-y-1/2 left-20 right-20 top-3/4">
-          <h3 className="text-3xl text-white">Want to be a volunteer?</h3>
+          <h3 className="text-3xl text-white">
+            Want to do something for humanity?
+          </h3>
           <button className="btn btn-ghost text-white bg-lime-500 w-40">
             Join here
           </button>
@@ -51,7 +53,9 @@ const Banner = () => {
           </h1>
         </div>
         <div className="absolute flex flex-col transform -translate-y-1/2 left-20 right-20 top-3/4">
-          <h3 className="text-3xl text-white">Want to be a volunteer?</h3>
+          <h3 className="text-3xl text-white">
+            Want to do something for humanity?
+          </h3>
           <button className="btn btn-ghost text-white bg-lime-500 w-40">
             Join here
           </button>
@@ -75,7 +79,9 @@ const Banner = () => {
           </h1>
         </div>
         <div className="absolute flex flex-col transform -translate-y-1/2 left-20 right-20 top-3/4">
-          <h3 className="text-3xl text-white">Want to be a volunteer?</h3>
+          <h3 className="text-3xl text-white">
+            Want to do something for humanity?
+          </h3>
           <button className="btn btn-ghost text-white bg-lime-500 w-40">
             Join here
           </button>
