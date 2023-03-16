@@ -10,6 +10,16 @@ const ShowServices = () => {
   }, []);
   return (
     <div>
+      <div className="text-center my-6">
+        <h1 className="text-4xl font-bold my-2">
+          Grow By Helping People in need.
+        </h1>
+        <input
+          type="text"
+          className="input input-bordered"
+          placeholder="Search..."
+        />
+      </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
         {services.map((service) => (
           <Service key={service._id} service={service} />
