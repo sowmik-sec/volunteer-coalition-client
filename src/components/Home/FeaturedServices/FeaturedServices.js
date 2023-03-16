@@ -1,5 +1,5 @@
 import React from "react";
-import FeaturedService from "../Home/FeaturedService/FeaturedService";
+import FeaturedService from "../FeaturedService/FeaturedService";
 
 const Services = () => {
   const services = [
@@ -27,7 +27,7 @@ const Services = () => {
   return (
     <div className="my-20">
       <h1 className="text-5xl font-bold mb-3">Featured Volunteer services</h1>
-      <div className="flex justify-evenly gap-4">
+      <div className="md:flex md:justify-evenly gap-4">
         {services.map((service) => (
           <FeaturedService key={service._id} service={service} />
         ))}
