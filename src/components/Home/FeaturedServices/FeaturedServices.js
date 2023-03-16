@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import FeaturedService from "../FeaturedService/FeaturedService";
 
 const Services = () => {
@@ -33,7 +34,9 @@ const Services = () => {
         ))}
       </div>
       <div className="text-center">
-        <button className="btn btn-accent my-6">Show more services</button>
+        <Link to="/services">
+          <button className="btn btn-accent my-6">Show more services</button>
+        </Link>
       </div>
     </div>
   );
