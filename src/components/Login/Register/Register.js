@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { register } = useContext(AuthContext);
+  const formRef = useRef(null);
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    console.log(email, password);
+    register(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        formRef.current.reset();
+      })
+      .catch((error) => console.error(error));
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -15,13 +34,15 @@ const Register = () => {
           </h3>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
+          <form ref={formRef} onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">First Name</span>
               </label>
               <input
                 type="text"
+                name="firstName"
+                onChange={(event) => setFirstName(event.target.value)}
                 placeholder="First Name"
                 className="input input-bordered"
               />
@@ -32,6 +53,8 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                name="lastName"
+                onChange={(event) => setLastName(event.target.value)}
                 placeholder="Last Name"
                 className="input input-bordered"
               />
@@ -42,6 +65,8 @@ const Register = () => {
               </label>
               <input
                 type="email"
+                name="email"
+                onChange={(event) => setEmail(event.target.value)}
                 placeholder="email"
                 className="input input-bordered"
               />
@@ -52,6 +77,8 @@ const Register = () => {
               </label>
               <input
                 type="password"
+                name="password"
+                onChange={(event) => setPassword(event.target.value)}
                 placeholder="password"
                 className="input input-bordered"
               />
@@ -71,7 +98,7 @@ const Register = () => {
                 Register with Google
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
