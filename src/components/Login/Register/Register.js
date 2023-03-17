@@ -8,6 +8,7 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
   const { user, register, updateUserProfile } = useContext(AuthContext);
   const formRef = useRef(null);
 
@@ -18,14 +19,15 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        handleUpdateUser(firstName, lastName);
+        handleUpdateUser(firstName, lastName, photoURL);
         formRef.current.reset();
       })
       .catch((error) => console.error(error));
   };
-  const handleUpdateUser = (firstName, lastName) => {
+  const handleUpdateUser = (firstName, lastName, photoURL) => {
     const profile = {
       displayName: `${firstName} ${lastName}`,
+      photoURL,
     };
     updateUserProfile(profile)
       .then(() => {
@@ -68,6 +70,18 @@ const Register = () => {
                 name="lastName"
                 onChange={(event) => setLastName(event.target.value)}
                 placeholder="Last Name"
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                type="text"
+                name="photoURL"
+                onChange={(event) => setPhotoURL(event.target.value)}
+                placeholder="Photo URL"
                 className="input input-bordered"
               />
             </div>

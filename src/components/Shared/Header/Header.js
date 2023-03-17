@@ -67,7 +67,17 @@ const Header = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <>{user.displayName}</>
+          <>
+            <img
+              src={user.photoURL}
+              alt=""
+              title={user.displayName}
+              className="h-12 w-12 rounded-full"
+            />
+            <button className="ml-3 bg-red-400 p-2 rounded-lg text-white">
+              Sign Out
+            </button>
+          </>
         ) : (
           <Link to="/register-here" className="btn">
             Register
