@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleSignOut = () => {
+    logOut()
+      .then(() => console.log("user logged out"))
+      .catch((err) => console.error(err));
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -74,7 +79,10 @@ const Header = () => {
               title={user.displayName}
               className="h-12 w-12 rounded-full"
             />
-            <button className="ml-3 bg-red-400 p-2 rounded-lg text-white">
+            <button
+              onClick={handleSignOut}
+              className="ml-3 bg-red-400 p-2 rounded-lg text-white"
+            >
               Sign Out
             </button>
           </>
