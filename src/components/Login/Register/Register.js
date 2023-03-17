@@ -8,7 +8,7 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { register } = useContext(AuthContext);
+  const { user, register, updateUserProfile } = useContext(AuthContext);
   const formRef = useRef(null);
 
   const handleRegister = (event) => {
@@ -18,9 +18,21 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        handleUpdateUser(firstName, lastName);
         formRef.current.reset();
       })
       .catch((error) => console.error(error));
+  };
+  const handleUpdateUser = (firstName, lastName) => {
+    const profile = {
+      displayName: `${firstName} ${lastName}`,
+    };
+    updateUserProfile(profile)
+      .then(() => {
+        console.log("user updated");
+        console.log(user);
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="hero min-h-screen bg-base-200">
