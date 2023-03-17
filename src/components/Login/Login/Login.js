@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
+  const formRef = useRef(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        formRef.current.reset();
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -15,13 +32,15 @@ const Login = () => {
           </h3>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
+          <form ref={formRef} onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                type="email"
+                name="email"
+                onChange={(event) => setEmail(event.target.value)}
                 placeholder="email"
                 className="input input-bordered"
               />
@@ -31,7 +50,8 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
+                onChange={(event) => setPassword(event.target.value)}
                 placeholder="password"
                 className="input input-bordered"
               />
@@ -60,7 +80,7 @@ const Login = () => {
                 Log in with Google
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
