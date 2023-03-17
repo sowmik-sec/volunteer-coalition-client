@@ -56,7 +56,7 @@ const Register = () => {
               />
               <label className="">
                 <span className="label-text-alt">Already have an account?</span>{" "}
-                <Link to="/login">
+                <Link to="login">
                   <span className="label-text-alt link link-hover">Log In</span>
                 </Link>
               </label>

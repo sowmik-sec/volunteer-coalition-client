@@ -43,7 +43,7 @@ const Login = () => {
                 <span className="label-text-alt">
                   New to Volunteer Coalition?
                 </span>{" "}
-                <Link to="/register">
+                <Link to="/register-here">
                   <span className="label-text-alt link link-hover">
                     Register
                   </span>
