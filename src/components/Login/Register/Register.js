@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
   return (
@@ -63,6 +64,12 @@ const Register = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>
+            </div>
+            <div className="text-center form-control mt-6">
+              <button className="bg-green-400 btn border-0">
+                <FcGoogle className="h-6 w-6 mr-6" />
+                Register with Google
+              </button>
             </div>
           </div>
         </div>
