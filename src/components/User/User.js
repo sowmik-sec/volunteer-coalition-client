@@ -16,15 +16,18 @@ const User = () => {
     handleUpdateUser(firstName, lastName, photoURL);
   };
 
-  const handleUpdateUser = (firstName, lastName, photoURL) => {
+  const handleUpdateUser = (fName, lName, pURL) => {
     const profile = {
-      displayName: `${firstName} ${lastName}`,
+      displayName: `${fName} ${lName}`,
       photoURL,
     };
     updateUserProfile(profile)
       .then(() => {
-        console.log("user updated");
-        console.log(user);
+        console.log("user updated", user.photoURL);
+
+        setPhotoURL(user.photoURL);
+        setFirstName(user.displayName.split(" ")[0]);
+        setLastName(user.displayName.split(" ")[0]);
       })
       .catch((err) => console.log(err));
   };
