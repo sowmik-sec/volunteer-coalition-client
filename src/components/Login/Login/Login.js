@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, googleSignUp } = useContext(AuthContext);
   const formRef = useRef(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,6 +16,15 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         formRef.current.reset();
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleGoogleSignUp = () => {
+    googleSignUp()
+      .then((result) => {
+        const user = result.user;
+        console.log("google info", user);
       })
       .catch((err) => console.error(err));
   };
@@ -75,7 +84,10 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
             <div className="text-center form-control mt-6">
-              <button className="bg-green-400 btn border-0">
+              <button
+                onClick={handleGoogleSignUp}
+                className="bg-green-400 btn border-0"
+              >
                 <FcGoogle className="h-6 w-6 mr-6" />
                 Log in with Google
               </button>

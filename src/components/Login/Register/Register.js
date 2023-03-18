@@ -10,13 +10,12 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [photoURL, setPhotoURL] = useState("");
-  const { user, register, updateUserProfile, verifyEmail } =
+  const { user, register, googleSignUp, updateUserProfile, verifyEmail } =
     useContext(AuthContext);
   const formRef = useRef(null);
 
   const handleRegister = (event) => {
     event.preventDefault();
-    console.log(email, password);
     register(email, password)
       .then((result) => {
         const user = result.user;
@@ -40,6 +39,14 @@ const Register = () => {
     verifyEmail()
       .then(() => {})
       .catch((err) => console.log(err));
+  };
+  const handleGoogleSignUp = () => {
+    googleSignUp()
+      .then((result) => {
+        const user = result.user;
+        console.log("google info", user);
+      })
+      .catch((err) => console.error(err));
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -124,7 +131,10 @@ const Register = () => {
               <button className="btn btn-primary">Register</button>
             </div>
             <div className="text-center form-control mt-6">
-              <button className="bg-green-400 btn border-0">
+              <button
+                onClick={handleGoogleSignUp}
+                className="bg-green-400 btn border-0"
+              >
                 <FcGoogle className="h-6 w-6 mr-6" />
                 Register with Google
               </button>

@@ -1,13 +1,9 @@
 import React, { useContext, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import { FcGoogle } from "react-icons/fc";
 import Header from "../Shared/Header/Header";
 import { toast } from "react-hot-toast";
 
 const User = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const { user, updateUserProfile, resetPassword } = useContext(AuthContext);
   const [firstName, setFirstName] = useState(user?.displayName?.split(" ")[0]);
   const [lastName, setLastName] = useState(user?.displayName?.split(" ")[1]);
