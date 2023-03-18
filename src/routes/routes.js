@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddEvent from "../components/Events/AddEvent/AddEvent";
+import Events from "../components/Events/Events/Events";
 import Home from "../components/Home/Home/Home";
 import Login from "../components/Login/Login/Login";
 import NotFound from "../components/Login/NotFound/NotFound";
@@ -41,6 +43,16 @@ const router = createBrowserRouter([
   {
     path: "/user",
     element: <User />,
+  },
+  {
+    path: "events",
+    element: <Events />,
+    children: [
+      {
+        path: "/events",
+        element: <AddEvent />,
+      },
+    ],
   },
   {
     path: "*",
