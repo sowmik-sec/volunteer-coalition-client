@@ -73,12 +73,14 @@ const Header = () => {
       <div className="navbar-end">
         {user ? (
           <>
-            <img
-              src={user.photoURL}
-              alt=""
-              title={user.displayName}
-              className="h-12 w-12 rounded-full"
-            />
+            <Link to="/user">
+              <img
+                src={user.photoURL}
+                alt=""
+                title={user.displayName}
+                className="h-12 w-12 rounded-full"
+              />
+            </Link>
             <button
               onClick={handleSignOut}
               className="ml-3 bg-red-400 p-2 rounded-lg text-white"

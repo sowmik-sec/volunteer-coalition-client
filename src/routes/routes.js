@@ -5,6 +5,7 @@ import NotFound from "../components/Login/NotFound/NotFound";
 import Register from "../components/Login/Register/Register";
 import RegisterHere from "../components/Login/RegisterHere/RegisterHere";
 import Services from "../components/Services/Services";
+import User from "../components/User/User";
 import Main from "../layout/Main/Main";
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         element: <Register />,
       },
     ],
+  },
+  {
+    path: "/user",
+    element: <User />,
   },
   {
     path: "*",

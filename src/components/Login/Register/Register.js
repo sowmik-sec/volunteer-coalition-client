@@ -18,7 +18,7 @@ const Register = () => {
     register(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
         handleUpdateUser(firstName, lastName, photoURL);
         formRef.current.reset();
       })
@@ -30,10 +30,7 @@ const Register = () => {
       photoURL,
     };
     updateUserProfile(profile)
-      .then(() => {
-        console.log("user updated");
-        console.log(user);
-      })
+      .then(() => console.log("profile updated"))
       .catch((err) => console.log(err));
   };
   return (
