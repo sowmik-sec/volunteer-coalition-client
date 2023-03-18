@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -9,7 +10,8 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [photoURL, setPhotoURL] = useState("");
-  const { user, register, updateUserProfile } = useContext(AuthContext);
+  const { user, register, updateUserProfile, verifyEmail } =
+    useContext(AuthContext);
   const formRef = useRef(null);
 
   const handleRegister = (event) => {
@@ -18,8 +20,9 @@ const Register = () => {
     register(email, password)
       .then((result) => {
         const user = result.user;
-
         handleUpdateUser(firstName, lastName, photoURL);
+        handleEmailVerification();
+        toast("Please verify your email address");
         formRef.current.reset();
       })
       .catch((error) => console.error(error));
@@ -31,6 +34,11 @@ const Register = () => {
     };
     updateUserProfile(profile)
       .then(() => console.log("profile updated"))
+      .catch((err) => console.log(err));
+  };
+  const handleEmailVerification = () => {
+    verifyEmail()
+      .then(() => {})
       .catch((err) => console.log(err));
   };
   return (

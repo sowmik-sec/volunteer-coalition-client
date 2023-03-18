@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -23,16 +24,28 @@ const AuthProvider = ({ children }) => {
   const updateUserProfile = (profile) => {
     return updateProfile(auth.currentUser, profile);
   };
+  const verifyEmail = () => {
+    return sendEmailVerification(auth.currentUser);
+  };
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      if (currentUser === null || currentUser.emailVerified) {
+        setUser(currentUser);
+      }
     });
     return () => unSubscribe;
   }, []);
   const logOut = () => {
     return signOut(auth);
   };
-  const authInfo = { user, register, login, updateUserProfile, logOut };
+  const authInfo = {
+    user,
+    register,
+    login,
+    updateUserProfile,
+    verifyEmail,
+    logOut,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
