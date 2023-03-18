@@ -4,6 +4,7 @@ import {
   getAuth,
   onAuthStateChanged,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -27,6 +28,9 @@ const AuthProvider = ({ children }) => {
   const verifyEmail = () => {
     return sendEmailVerification(auth.currentUser);
   };
+  const resetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser === null || currentUser.emailVerified) {
@@ -45,6 +49,7 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     verifyEmail,
     logOut,
+    resetPassword,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

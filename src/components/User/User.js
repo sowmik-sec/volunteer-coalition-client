@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import Header from "../Shared/Header/Header";
+import { toast } from "react-hot-toast";
 
 const User = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, updateUserProfile } = useContext(AuthContext);
+  const { user, updateUserProfile, resetPassword } = useContext(AuthContext);
   const [firstName, setFirstName] = useState(user?.displayName?.split(" ")[0]);
   const [lastName, setLastName] = useState(user?.displayName?.split(" ")[1]);
   const [photoURL, setPhotoURL] = useState(user?.photoURL);
@@ -30,6 +31,13 @@ const User = () => {
         console.log(user);
       })
       .catch((err) => console.log(err));
+  };
+  const handleResetPassword = () => {
+    resetPassword(user?.email)
+      .then(() => {
+        toast("Password reset email sent");
+      })
+      .catch((err) => console.error(err));
   };
   return (
     <div>
@@ -98,21 +106,15 @@ const User = () => {
                   className="input input-bordered"
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  onChange={(event) => setPassword(event.target.value)}
-                  placeholder="password"
-                  className="input input-bordered"
-                />
-              </div>
+
               <div className="form-control mt-6">
                 <button className="btn btn-primary" type="submit">
                   Update Profile
+                </button>
+              </div>
+              <div className="form-control mt-6">
+                <button onClick={handleResetPassword} className="btn">
+                  Reset Password
                 </button>
               </div>
             </form>
