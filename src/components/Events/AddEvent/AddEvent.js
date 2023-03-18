@@ -13,7 +13,7 @@ const AddEvent = () => {
   };
   return (
     <div className="bg-slate-100 min-h-screen">
-      <form>
+      <form className="">
         <div className="md:flex md:justify-evenly">
           <div className="form-control w-[45%]">
             <label className="label">
@@ -35,7 +35,7 @@ const AddEvent = () => {
               onChange={(date) => setSelectedDate(date)}
               dateFormat="dd/MM/yyyy"
               minDate={new Date()}
-              className="w-full"
+              className="w-full border border-gray-200 rounded-lg p-2"
             />
           </div>
         </div>
@@ -61,6 +61,9 @@ const AddEvent = () => {
               className="file-input"
             />
           </div>
+        </div>
+        <div className="text-right">
+          <button className="btn btn-primary mr-8 my-5">Add Event</button>
         </div>
       </form>
     </div>
