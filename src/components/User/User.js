@@ -44,13 +44,13 @@ const User = () => {
       <Header />
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Register now!</h1>
-            <h3 className="text-3xl my-6">
-              Welcome to our volunteer network! We're thrilled that you're
-              considering joining us in our mission to make a positive impact in
-              our community.
-            </h3>
+          <div className="text-center lg:text-center md:w-[800px]">
+            <img
+              src={user?.photoURL}
+              className="w-[350px] h-[350px] mx-auto rounded-lg"
+              alt="user"
+            />
+            <h1 className="text-3xl">{user?.displayName}</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form ref={formRef} onSubmit={handleUpdate} className="card-body">
