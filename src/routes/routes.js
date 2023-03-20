@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddEvent from "../components/Events/AddEvent/AddEvent";
+import Event from "../components/Events/Event/Event";
 import Events from "../components/Events/Events/Events";
 import Home from "../components/Home/Home/Home";
 import Login from "../components/Login/Login/Login";
@@ -47,10 +48,17 @@ const router = createBrowserRouter([
   {
     path: "events",
     element: <Events />,
+    loader: () => fetch(`http://localhost:5000/events`),
     children: [
       {
         path: "/events",
         element: <AddEvent />,
+      },
+      {
+        path: "/events/:id",
+        element: <Event />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/events/${params.id}`),
       },
     ],
   },
